@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # phone
 
 > mjwebsite phone
@@ -19,3 +20,7 @@ npm run build --report
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+=======
+# singlepage-cli
+vue stack
+>>>>>>> ca9bc8db1d1b8f0b57cac50e6899e8d71b19a6a0
