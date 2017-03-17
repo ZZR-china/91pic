@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # phone
 
 > mjwebsite phone
@@ -23,4 +22,3 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 =======
 # singlepage-cli
 vue stack
->>>>>>> ca9bc8db1d1b8f0b57cac50e6899e8d71b19a6a0
