@@ -12,13 +12,9 @@ export default new Router({
       name: 'Container',
       component: Container,
       children: [{
-        path: '/index',
-        name: 'Index',
-        component: require('../views/Index')
-      }, {
-        path: '/download',
-        name: 'Download',
-        component: require('../views/Download')
+        path: '/recommend',
+        name: 'Recommend',
+        component: require('../views/Recommend')
       }]
     }
   ]
