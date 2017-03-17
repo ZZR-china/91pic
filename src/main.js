@@ -23,12 +23,8 @@ Vue.use(VueLazyload, {
 })
 
 router.afterEach((to, from) => {
-  if (from.path === '/') {
-    return
-  }
-  if (from.path.split('/')[1] === 'index') {
-    let container = document.getElementById('index-container')
-    container.scrollTop = 0
+  if (to.path === '/') {
+    return router.push({'path': 'recommend'})
   }
 })
 
