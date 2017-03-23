@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    title: '91看图'
+    title: '91看图',
+    header: ''
   },
   mutations: {
   },

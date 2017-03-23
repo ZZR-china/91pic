@@ -1,16 +1,9 @@
 <template>
   <div class="index">
     <div class="index-title">
-      <mu-flexbox>
-        <mu-flexbox-item class="back-flex" grow="1">
-          <mu-icon-button icon="arrow_back" @click="goback"/>
-        </mu-flexbox-item>
-        <mu-flexbox-item class="title-flex" grow="5">
-          {{ title }}
-        </mu-flexbox-item>
-        <mu-flexbox-item class=""  grow="1">
-        </mu-flexbox-item>
-      </mu-flexbox>
+      <mu-appbar title="91看图">
+        <mu-text-field icon="search" class="appbar-search-field"  slot="right" hintText="请输入搜索内容"/>
+      </mu-appbar>
     </div>
     <div class="index-container" id="index-container">
       <transition name="">
@@ -19,10 +12,10 @@
     </div>
     <mu-paper>
       <mu-bottom-nav :value="bottomNav" @change="handleChange">
-        <mu-bottom-nav-item value="recommend" title="推荐" icon="fiber_new"/>
-        <mu-bottom-nav-item value="hot" title="热点" icon="person"/>
-        <mu-bottom-nav-item value="sexy" title="性感" icon="pets"/>
-        <mu-bottom-nav-item value="puery" title="清纯" icon="ondemand_video"/>
+        <mu-bottom-nav-item value="index" title="首页" icon="home"/>
+        <mu-bottom-nav-item value="pictrue" title="看图" icon="picture_in_picture"/>
+        <mu-bottom-nav-item value="collection" title="收藏" icon="favorite_border"/>
+        <mu-bottom-nav-item value="mine" title="我的" icon="person"/>
       </mu-bottom-nav>
     </mu-paper>
   </div>
@@ -35,26 +28,26 @@ export default {
   created () {
     var rname = this.$route.name
     switch (rname) {
-      case 'recommend':
-        this.bottomNav = 'recommend'
+      case 'index':
+        this.bottomNav = 'index'
         break
-      case 'hot':
-        this.bottomNav = 'hot'
+      case 'pictrue':
+        this.bottomNav = 'pictrue'
         break
-      case 'sexy':
-        this.bottomNav = 'sexy'
+      case 'collection':
+        this.bottomNav = 'collection'
         break
-      case 'puery':
-        this.bottomNav = 'puery'
+      case 'mine':
+        this.bottomNav = 'mine'
         break
       default:
-        this.bottomNav = 'recommend'
+        this.bottomNav = 'index'
         break
     }
   },
   data () {
     return {
-      bottomNav: 'recommend'
+      bottomNav: 'index'
     }
   },
   computed: mapState({
@@ -72,39 +65,43 @@ export default {
 }
 </script>
 <style lang="less">
-.index {
-  a {
-    color: #333 !important;
+.appbar-search-field{
+  color: #FFF;
+  margin-bottom: 0;
+  &.focus-state {
+    color: #FFF;
   }
+  .mu-text-field-hint {
+    color: fade(#FFF, 54%);
+  }
+  .mu-text-field-input {
+    color: #FFF;
+  }
+  .mu-text-field-focus-line {
+    background-color: #FFF;
+  }
+}
+
+
+
+.index {
+  .mu-appbar {
+    background-color: #ff4081;
+  }
+  .mu-bottom-item-active .mu-bottom-item-icon {
+    color: #ff4081;
+  }
+
+  .mu-bottom-item-active .mu-bottom-item-text {
+    color: #ff4081;
+  }
+
   &-container {
     width: 100%;
     position: absolute;
     top: 45px;
     bottom: 56px;
     overflow-y: scroll;
-  }
-  &-title {
-    .mu-flexbox {
-      background: #03a9f4;
-      height: 45px;
-      .title-flex {
-        text-align: center;
-        color: #fff;
-        font-size: 18px;
-      }
-      .back-flex {
-        color: #fff;
-      }
-    }
-  }
-  .mu-appbar {
-    height: 45px;
-    .mu-appbar-title {
-      text-align: center;
-      span {
-        font-size: 18px;
-      }
-    }
   }
   .mu-paper {
     position: fixed;

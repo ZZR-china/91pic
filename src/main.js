@@ -23,9 +23,6 @@ Vue.use(VueLazyload, {
 })
 
 router.afterEach((to, from) => {
-  if (to.path === '/') {
-    return router.push({'path': 'recommend'})
-  }
 })
 
 /* eslint-disable no-new */
