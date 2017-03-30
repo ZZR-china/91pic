@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+.DS_Store
+dist/
+npm-debug.log
+yarn-error.log
+>>>>>>> 9c6b31e5b4a6bd4b035351ef00ab8ea35851dc07
 # Logs
 logs
 *.log
