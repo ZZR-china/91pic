@@ -10,12 +10,7 @@ export default new Router({
     {
       path: '/',
       name: 'Container',
-      component: Container,
-      children: [{
-        path: '/recommend',
-        name: 'Recommend',
-        component: require('../views/Recommend')
-      }]
+      component: Container
     }
   ]
 })

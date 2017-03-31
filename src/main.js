@@ -1,24 +1,28 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import store from './store'
 import MuseUI from 'muse-ui'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import VueLazyload from 'vue-lazyload'
 
+import SearchHeader from '@/components/SearchHeader'
+
 import App from './App'
 import router from './router'
+import store from './store'
 
 import 'muse-ui/dist/muse-ui.css'
 
 Vue.config.productionTip = false
 
+Vue.component('search-header', SearchHeader)
+
 Vue.use(VueAwesomeSwiper)
 Vue.use(MuseUI)
 Vue.use(VueLazyload, {
   preLoad: 1.3,
-  error: require('./assets/404.png'),
-  loading: require('./assets/loading.gif'),
+  error: require('./assets/images/404.png'),
+  loading: require('./assets/images/loading.gif'),
   attempt: 1
 })
 
