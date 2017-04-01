@@ -13,8 +13,8 @@
           <p>{{item._id}}</p>
         </mu-flexbox-item>
       </mu-flexbox>
-      <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore"/>
     </div>
+    <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore"/>
   </div>
 </template>
 <script>
@@ -79,7 +79,7 @@ export default {
 </script>
 <style lang="less">
 .index {
-  height: 72rem;
+  height: 30rem;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   padding: .6rem .6rem;
