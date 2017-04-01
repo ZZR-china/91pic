@@ -26,6 +26,11 @@ module.exports = {
       'apis': resolve('src/apis')
     }
   },
+  externals: [
+    {
+      "window": "window"
+    }
+  ],
   module: {
     rules: [
       {

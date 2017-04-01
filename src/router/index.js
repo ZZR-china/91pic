@@ -11,6 +11,11 @@ export default new Router({
       path: '/',
       name: 'Container',
       component: Container
+    },
+    {
+      path: '/albums/:id/pics',
+      name: 'AlbumsPics',
+      component: require('@/views/AlbumsPics')
     }
   ]
 })
