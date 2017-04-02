@@ -5,7 +5,7 @@
       </mu-appbar>
       <mu-flexbox orient="vertical" class="albums-box" align="center" justify="space-between">
         <mu-flexbox-item v-for="item in pics" :key="item._id" class="albums-box__img">
-          <img :src="item.url" :alt="item.title">
+          <v-img :imgUrl="item.url | pic"></v-img>
         </mu-flexbox-item>
       </mu-flexbox>
   </div>

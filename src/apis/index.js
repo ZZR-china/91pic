@@ -6,3 +6,10 @@ export const albums = {
     return host + '/albums/' + id + '/pics'
   }
 }
+
+export const pics = {
+  index: host + '/pics?limit=6',
+  url: function (url) {
+    return host + '/pics/url?url=' + url
+  }
+}

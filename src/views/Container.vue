@@ -4,13 +4,12 @@
     <div class="index-albums">
       <mu-flexbox v-for="item in albums" :key="item._id" class="index-albums-box" align="center" justify="space-between" @click.native="watchPics(item._id)">
         <mu-flexbox-item grow="2" class="index-albums-box__img">
-          <img :src="item.hotest_pic_url" :alt="item.title">
+          <v-img :imgUrl="item.hotest_pic_url | pic"></v-img>
         </mu-flexbox-item>
         <mu-flexbox-item grow="6" class="index-albums-box__detail">
           <p>{{item.title}}</p>
           <p>{{'浏览量: ' + item.view}}</p>
           <p>{{item.formate_time.full}}</p>
-          <p>{{item._id}}</p>
         </mu-flexbox-item>
       </mu-flexbox>
     </div>

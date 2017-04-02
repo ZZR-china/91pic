@@ -10,12 +10,15 @@ import SearchHeader from '@/components/SearchHeader'
 import App from './App'
 import router from './router'
 import store from './store'
+import {picurl} from './filters'
+import vImg from '@/components/Lazyimg'
 
 import 'muse-ui/dist/muse-ui.css'
 
 Vue.config.productionTip = false
 
 Vue.component('search-header', SearchHeader)
+Vue.component('v-img', vImg)
 
 Vue.use(VueAwesomeSwiper)
 Vue.use(MuseUI)
@@ -25,6 +28,8 @@ Vue.use(VueLazyload, {
   loading: require('./assets/images/loading.gif'),
   attempt: 1
 })
+
+Vue.filter('pic', picurl)
 
 router.afterEach((to, from) => {
 })
