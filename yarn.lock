@@ -4060,6 +4060,10 @@ sax@>=0.6.0, sax@~1.2.1:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.2.tgz#fd8631a23bc7826bef5d871bdb87378c95647828"
 
+scrollreveal:
+  version "3.3.4"
+  resolved "http://registry.npm.taobao.org/scrollreveal/download/scrollreveal-3.3.4.tgz#4938fb5022a99e90d9de3b3fecc77662e320191d"
+
 semver@^5.3.0, semver@~5.3.0, "semver@2 || 3 || 4 || 5":
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.3.0.tgz#9b2ce5d3de02d17c6012ad326aa6b4d0cf54f94f"

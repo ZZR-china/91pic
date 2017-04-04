@@ -28,7 +28,8 @@ module.exports = {
   },
   externals: [
     {
-      "window": "window"
+      "window": "window",
+      "document": "document",
     }
   ],
   module: {

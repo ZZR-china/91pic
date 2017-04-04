@@ -1,6 +1,6 @@
 <template>
   <div class="album">
-      <mu-appbar title="back" @click.native="goBack">
+      <mu-appbar title="返回" @click.native="goBack">
         <mu-icon-button icon='keyboard_backspace' slot="left"/>
       </mu-appbar>
       <mu-flexbox orient="vertical" class="albums-box" align="center" justify="space-between">
@@ -41,12 +41,14 @@ export default {
   }
 }
 </script>
-<style lang="less">
+<style lang="less" scoped>
+@import "../assets/styles/colors.less";
+
 .albums {
   padding: .6rem .6rem;
   &-box {
+    background-color: @pink50;
     &__img {
-      margin-bottom: 8px;
     }
     img {
       width: 100%;

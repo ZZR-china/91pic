@@ -16,6 +16,11 @@ export default new Router({
       path: '/albums/:id/pics',
       name: 'AlbumsPics',
       component: require('@/views/AlbumsPics')
+    },
+    {
+      path: '/search/result',
+      name: 'SeatchResult',
+      component: require('@/views/SearchResult')
     }
   ]
 })

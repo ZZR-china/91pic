@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^0.15.3",
     "muse-ui": "^2.0.0-rc.5",
+    "scrollreveal": "^3.3.4",
     "vue": "^2.2.2",
     "vue-awesome-swiper": "^2.3.2",
     "vue-infinite-scroll": "^2.0.0",

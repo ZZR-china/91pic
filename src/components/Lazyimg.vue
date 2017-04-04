@@ -1,5 +1,5 @@
 <template>
-    <img src="" alt="" v-lazy="imgObj" lazy="loading" class="bg-box" />
+    <img v-lazy="imgObj" lazy="loading" class="bg-box" />
 </template>
 <script>
 export default {
@@ -48,6 +48,7 @@ img[lazy=loaded] {
 
 img[lazy=loading] {
     margin: auto;
+    padding: 0;
     border: none;
 }
 
@@ -68,7 +69,6 @@ img[lazy=error] {
 }
 
 .bg-box[lazy=loading] {
-    background-size: 10%;
     background-repeat: no-repeat;
     background-position: center center;
     background-color: #f1f1f1;

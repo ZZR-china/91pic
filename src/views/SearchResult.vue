@@ -22,57 +22,73 @@
   </div>
 </template>
 <script>
-import {mapGetters, mapActions} from 'vuex'
 import window from 'window'
+import {albums as Albums} from 'apis'
+import axios from 'axios'
 
 export default {
-  name: 'contain',
+  name: 'searchresult',
   created () {
-    this.initAlbums()
-  },
-  computed: {
-    ...mapGetters({
-      'albums': 'getMainAlbums',
-      'skip': 'getMainSKip',
-      'top': 'getMainTop'
-    })
+    const query = this.$route.query
+    const categoryName = query.category_name
+    console.log('asd', categoryName)
+    this.name = categoryName
+    this.initAlbums({categoryName})
   },
   data () {
     return {
+      name: '',
       loading: false,
       scroller: null,
       isHot: true,
-      isShow: false
+      isShow: false,
+      albums: []
     }
   },
   mounted () {
     const indexDom = window.document.querySelector('.index')
     this.scroller = this.$el
-    indexDom.scrollTop = this.top
+    const top = window.localStorage.getItem('searchTop')
+    indexDom.scrollTop = top
   },
   methods: {
-    ...mapActions([
-      'getMainAlbums',
-      'addMainAlbums'
-    ]),
-    onTouchStart (event) {
-      alert(event)
-    },
-    initAlbums () {
-      if (this.albums.length < 1) {
-        this.getMainAlbums({limit: 6})
-      }
+    initAlbums ({categoryName}) {
+      axios.get(Albums.index, {
+        params: {
+          limit: 6,
+          category_name: categoryName
+        }
+      })
+      .then(rs => {
+        this.albums = rs.data
+      })
+      .catch(err => {
+        console.error(err)
+      })
     },
     loadMore () {
       this.loading = true
       setTimeout(() => {
-        this.addMainAlbums({skip: this.skip + 6})
+        axios.get(Albums.index, {
+          params: {
+            limit: 6,
+            skip: this.skip,
+            category_name: this.name
+          }
+        })
+        .then(rs => {
+          const addalbums = rs.data
+          this.albums = this.albums.concat(addalbums)
+        })
+        .catch(err => {
+          console.error(err)
+        })
         this.loading = false
       }, 1800)
     },
     watchPics (id) {
       const indexDom = window.document.querySelector('.index')
-      this.$store.commit('SET_MAINTOP', {top: indexDom.scrollTop})
+      window.localStorage.setItem('searchTop', indexDom.scrollTop)
       this.$router.push({name: 'AlbumsPics', params: {id}})
     },
     Gotop () {

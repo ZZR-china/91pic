@@ -10,7 +10,7 @@ import SearchHeader from '@/components/SearchHeader'
 import App from './App'
 import router from './router'
 import store from './store'
-import {picurl} from './filters'
+import {picurl, ishot, isnull} from './filters'
 import vImg from '@/components/Lazyimg'
 
 import 'muse-ui/dist/muse-ui.css'
@@ -30,6 +30,8 @@ Vue.use(VueLazyload, {
 })
 
 Vue.filter('pic', picurl)
+Vue.filter('ishot', ishot)
+Vue.filter('isnull', isnull)
 
 router.afterEach((to, from) => {
 })
