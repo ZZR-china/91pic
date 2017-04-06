@@ -55,9 +55,6 @@ export default {
       'getMainAlbums',
       'addMainAlbums'
     ]),
-    onTouchStart (event) {
-      alert(event)
-    },
     initAlbums () {
       if (this.albums.length < 1) {
         this.getMainAlbums({limit: 6})

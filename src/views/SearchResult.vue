@@ -16,6 +16,7 @@
     <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore"/>
     <div class="index-tools" :class="{'index-tools__show': isShow}" >
       <mu-float-button icon="arrow_upward" @click.native="Gotop" mini/>
+      <mu-float-button icon="home" @click.native="Gohome" mini/>
       <mu-float-button icon="refresh" @click.native="Refresh" mini/>
       <mu-float-button icon="add" secondary class="index-albums-tools__add" @click.native="isShow = !isShow" />
     </div>
@@ -23,27 +24,27 @@
 </template>
 <script>
 import window from 'window'
-import {albums as Albums} from 'apis'
-import axios from 'axios'
+import {mapGetters, mapActions} from 'vuex'
 
 export default {
   name: 'searchresult',
   created () {
-    const query = this.$route.query
-    const categoryName = query.category_name
-    console.log('asd', categoryName)
-    this.name = categoryName
-    this.initAlbums({categoryName})
+  },
+  beforeRouteUpdate (to, from, next) {
   },
   data () {
     return {
-      name: '',
       loading: false,
       scroller: null,
       isHot: true,
-      isShow: false,
-      albums: []
+      isShow: false
     }
+  },
+  computed: {
+    ...mapGetters({
+      'albums': 'getSearchData',
+      'skip': 'getSearchSkip'
+    })
   },
   mounted () {
     const indexDom = window.document.querySelector('.index')
@@ -52,37 +53,13 @@ export default {
     indexDom.scrollTop = top
   },
   methods: {
-    initAlbums ({categoryName}) {
-      axios.get(Albums.index, {
-        params: {
-          limit: 6,
-          category_name: categoryName
-        }
-      })
-      .then(rs => {
-        this.albums = rs.data
-      })
-      .catch(err => {
-        console.error(err)
-      })
-    },
+    ...mapActions([
+      'addSearchData'
+    ]),
     loadMore () {
       this.loading = true
       setTimeout(() => {
-        axios.get(Albums.index, {
-          params: {
-            limit: 6,
-            skip: this.skip,
-            category_name: this.name
-          }
-        })
-        .then(rs => {
-          const addalbums = rs.data
-          this.albums = this.albums.concat(addalbums)
-        })
-        .catch(err => {
-          console.error(err)
-        })
+        this.addSearchData({skip: this.skip + 6})
         this.loading = false
       }, 1800)
     },
@@ -95,6 +72,9 @@ export default {
       const indexDom = window.document.querySelector('.index')
       indexDom.scrollTop = -1000
       this.isShow = false
+    },
+    Gohome () {
+      this.$router.push({path: '/'})
     },
     Refresh () {
       this.$router.go(0)

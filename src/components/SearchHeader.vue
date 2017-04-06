@@ -48,19 +48,25 @@ export default {
   },
   methods: {
     ...mapActions([
-      'getSearchCategories'
+      'getSearchCategories',
+      'getSearchData'
     ]),
     initCategories () {
       if (this.categories.length < 1) {
         this.getSearchCategories({limit: 5})
       }
     },
-    showSearchResult (name) {
-      console.log('asd')
-      this.$router.push({path: '/search/result', query: {category_name: name}})
+    showSearchResult (categoryName) {
+      console.log('categoryName', categoryName)
+      const route = this.$route.path
+      this.getSearchData({categoryName})
+      this.isSearch = !this.isSearch
+      if (route !== '/search/result') {
+        this.$router.push({path: '/search/result'})
+      }
     },
     showSearch () {
-      this.isSearch = !this.isSearch
+      this.isSearch = true
     }
   }
 }
